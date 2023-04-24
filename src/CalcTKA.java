@@ -9,8 +9,8 @@ public class CalcTKA {
             ConsoleReader CR = new ConsoleReader();
             String[] words = CR.Read().split("\\s");
             Exceptions exc = new Exceptions(words);
-            //Converter.ConverterRomanNum(words[0]);
-            //Converter.ConverterRomanNum(words[2]);
+            Converter.ConverterRomanNum(words[0]);
+            Converter.ConverterRomanNum(words[2]);
             if (!exc.check) {
                 Calculator calc = new Calculator(words);
                 calc.Run();
