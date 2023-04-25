@@ -7,55 +7,47 @@ public class Calculator implements ICalculate {
     Number firstNum;
     Number secondNum;
     String command = "";
-    public Calculator()
-    {
-        firstNum = new Number();
-        secondNum = new Number();
-        command = "+";
-    }
-    public Calculator(String[] words){
-        firstNum = new Number(words[0]);
-        command = words[1];
-        secondNum = new Number(words[2]);
+
+    public Calculator() {
+        this.firstNum = new Number();
+        this.secondNum = new Number();
+        this.command = "+";
     }
 
-    public void Run(){
-        switch (command) {
+    public Calculator(String[] words) {
+        this.firstNum = new Number(words[0]);
+        this.command = words[1];
+        this.secondNum = new Number(words[2]);
+    }
+
+    public int Run() throws Exception {
+        switch (this.command) {
             case "+":
-                Addition(firstNum, secondNum);
-                break;
+                return this.Addition(this.firstNum, this.secondNum);
             case "-":
-                Subtraction(firstNum, secondNum);
-                break;
+                return this.Subtraction(this.firstNum, this.secondNum);
             case "*":
-                Multiplication(firstNum, secondNum);
-                break;
+                return this.Multiplication(this.firstNum, this.secondNum);
             case "/":
-                Division(firstNum, secondNum);
-                break;
+                return this.Division(this.firstNum, this.secondNum);
             default:
-                System.out.println("Арифметическое действие не распознано");
-                break;
+                throw new Exception("Арифметическое действие не распознано");
         }
     }
-    @Override
-    public void Addition(Number firstNum, Number secondNum) {
-        System.out.println(firstNum.Num + secondNum.Num);
+
+    public int Addition(Number firstNum, Number secondNum) {
+        return firstNum.Num + secondNum.Num;
     }
 
-    @Override
-    public void Subtraction(Number firstNum, Number secondNum) {
-        System.out.println(firstNum.Num - secondNum.Num);
-
+    public int Subtraction(Number firstNum, Number secondNum) {
+        return firstNum.Num - secondNum.Num;
     }
 
-    @Override
-    public void Multiplication(Number firstNum, Number secondNum) {
-        System.out.println(firstNum.Num * secondNum.Num);
+    public int Multiplication(Number firstNum, Number secondNum) {
+        return firstNum.Num * secondNum.Num;
     }
 
-    @Override
-    public void Division(Number firstNum, Number secondNum) {
-        System.out.println(firstNum.Num / secondNum.Num);
+    public int Division(Number firstNum, Number secondNum) {
+        return firstNum.Num / secondNum.Num;
     }
 }

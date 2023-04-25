@@ -1,6 +1,7 @@
 package iface;
 
 public interface INumber {
-    public int Num = 0;
-    public void InNum();
+    int Num = 0;
+
+    void InNum();
 }

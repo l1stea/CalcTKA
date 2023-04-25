@@ -1,24 +1,28 @@
-import calc.Calculator;
-import convert.Converter;
-import read.ConsoleReader;
+import calc.CalcArabic;
+import calc.CalcRoman;
 import except.Exceptions;
+import read.ConsoleReader;
 
 public class CalcTKA {
+    public CalcTKA() {
+    }
+
     public static void Calculate() {
         try {
             ConsoleReader CR = new ConsoleReader();
             String[] words = CR.Read().split("\\s");
             Exceptions exc = new Exceptions(words);
-            Converter.ConverterRomanNum(words[0]);
-            Converter.ConverterRomanNum(words[2]);
-            if (!exc.check) {
-                Calculator calc = new Calculator(words);
-                calc.Run();
+            if (exc.checkArabic) {
+                new CalcArabic(words);
             }
+
+            if (exc.checkRoman) {
+                new CalcRoman(words);
+            }
+        } catch (NumberFormatException ex) {
+        } catch (Exception ex) {
+            System.out.println(ex);
         }
-        catch (Exception e) {
-            System.out.println(e);
-            var check = e;
-        }
+
     }
 }

@@ -1,5 +1,7 @@
 package iface;
+
 import num.Number;
+
 interface IMultiplication {
-    void Multiplication(Number firstNum, Number secondNum);
+    int Multiplication(Number var1, Number var2);
 }

@@ -12,15 +12,15 @@ public enum ConverterRomanNum {
 
     private int value;
 
-    ConverterRomanNum(int value) {
+    private ConverterRomanNum(int value) {
         this.value = value;
     }
 
     public int getValue() {
-        return value;
+        return this.value;
     }
 
-    public static List getReverseSortedValues() {
+    public static List<ConverterRomanNum> getReverseSortedValues() {
         return Arrays.stream(values())
                 .sorted(Comparator.comparing((ConverterRomanNum e) -> e.value).reversed())
                 .collect(Collectors.toList());
@@ -30,12 +30,12 @@ public enum ConverterRomanNum {
         String romanNumeral = input.toUpperCase();
         int result = 0;
 
-        List romanNumerals = ConverterRomanNum.getReverseSortedValues();
+        List<ConverterRomanNum> romanNumerals = ConverterRomanNum.getReverseSortedValues();
 
         int i = 0;
 
         while ((romanNumeral.length() > 0) && (i < romanNumerals.size())) {
-            ConverterRomanNum symbol = (ConverterRomanNum) romanNumerals.get(i);
+            ConverterRomanNum symbol = romanNumerals.get(i);
             if (romanNumeral.startsWith(symbol.name())) {
                 result += symbol.getValue();
                 romanNumeral = romanNumeral.substring(symbol.name().length());
@@ -50,5 +50,26 @@ public enum ConverterRomanNum {
 
         return result;
     }
-}
+    public static String arabicToRoman(int number) {
+        if ((number <= 0) || (number > 4000)) {
+            throw new IllegalArgumentException(number + " is not in range (0,4000]");
+        }
 
+        List<ConverterRomanNum> romanNumerals = ConverterRomanNum.getReverseSortedValues();
+
+        int i = 0;
+        StringBuilder sb = new StringBuilder();
+
+        while ((number > 0) && (i < romanNumerals.size())) {
+            ConverterRomanNum currentSymbol = romanNumerals.get(i);
+            if (currentSymbol.getValue() <= number) {
+                sb.append(currentSymbol.name());
+                number -= currentSymbol.getValue();
+            } else {
+                i++;
+            }
+        }
+
+        return sb.toString();
+    }
+}
