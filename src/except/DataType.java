@@ -18,7 +18,7 @@ public class DataType {
         try {
             Converter.ConvertInt(word);
             this.checkArabic = true;
-        } catch (Exception var3) {
+        } catch (Exception ex) {
             System.out.println(this.str + word);
         }
 
@@ -28,7 +28,7 @@ public class DataType {
         try {
             Converter.ConvertRomanToArabic(word);
             this.checkRoman = true;
-        } catch (Exception var3) {
+        } catch (Exception ignored) {
         }
 
     }
