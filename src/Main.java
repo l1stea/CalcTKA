@@ -5,9 +5,10 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        CalcTKA calcTKA = new CalcTKA();
+        new CalcTKA();
         CalcTKA.Calculate();
     }
 }
 
 //for develop 2.3
+//for develop 2.4
